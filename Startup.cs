@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using User_service.Facades;
 
 namespace UserService
 {
@@ -32,6 +33,9 @@ namespace UserService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UserService", Version = "v1" });
             });
+
+            services.AddLogging();
+            services.AddSingleton<UserFacade>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
