@@ -1,3 +1,16 @@
 {
-
+  "Users": [
+    {
+      "id": "03b0becd-92fe-41ee-8d92-87cfcd18868e",
+      "firstName": "Jeff",
+      "lastName": "Jones",
+      "email": "jeff.jones@gmail.com"
+    },
+    {
+      "id": "9b46ff4a-6ae0-40e7-bc56-502f609a45b2",
+      "firstName": "Bill",
+      "lastName": "Bones",
+      "email": "bill.bones@gmail.com"
+    }
+  ]
 }

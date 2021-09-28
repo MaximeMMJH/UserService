@@ -28,17 +28,19 @@ namespace User_service.Facades
 
         internal UserDbModel getUser(Guid id)
         {
-            return new UserDbModel(Guid.NewGuid(), "", "", "");
+            return users.FirstOrDefault(user => user.id.Equals(id));
         }
 
         internal void deleteUser(Guid id)
         {
-
+            users.Remove(getUser(id));
         }
 
         internal UserDbModel UpdateUser(UserDbModel userDbModel)
         {
-            return new UserDbModel(Guid.NewGuid(), "", "", "");
+            deleteUser(userDbModel.id);
+            CreateUser(userDbModel);
+            return userDbModel;
         }
     }
 }
