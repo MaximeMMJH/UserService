@@ -19,10 +19,10 @@ namespace User_service.Transformers
         public static UserJsonModel transformToJsonModel(UserDbModel userDbModel)
         {
             return new UserJsonModel(
-                userDbModel.id,
-                userDbModel.firstname,
-                userDbModel.lastname,
-                userDbModel.email);
+                userDbModel.Id,
+                userDbModel.Firstname,
+                userDbModel.Lastname,
+                userDbModel.Email);
         }
         public static List<UserJsonModel> transformToJsonModels(List<UserDbModel> userDbModels)
         {

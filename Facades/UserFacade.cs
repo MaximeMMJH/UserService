@@ -3,44 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using User_service.Models;
+using User_service.Repositories;
 
 namespace User_service.Facades
 {
     public class UserFacade
     {
         private List<UserDbModel> users;
+        private UserRepository repository;
 
-        public UserFacade()
+        public UserFacade(UserRepository userRepository)
         {
+            repository = userRepository;
             users = new List<UserDbModel>();
         }
 
         internal List<UserDbModel> GetUsers()
         {
-            return users;
+            return repository.GetUsers();
         }
 
         internal UserDbModel CreateUser(UserDbModel userDbModel)
         {
-            users.Add(userDbModel);
-            return userDbModel;
+            return repository.CreateUser(userDbModel);
         }
 
-        internal UserDbModel getUser(Guid id)
+        internal UserDbModel GetUser(Guid id)
         {
-            return users.FirstOrDefault(user => user.id.Equals(id));
+            return repository.GetUser(id);
         }
 
-        internal void deleteUser(Guid id)
+        internal void DeleteUser(Guid id)
         {
-            users.Remove(getUser(id));
+            repository.DeleteUser(id);
         }
 
         internal UserDbModel UpdateUser(UserDbModel userDbModel)
         {
-            deleteUser(userDbModel.id);
-            CreateUser(userDbModel);
-            return userDbModel;
+            return repository.UpdateUser(userDbModel);
         }
     }
 }

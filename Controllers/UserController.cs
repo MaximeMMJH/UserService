@@ -61,7 +61,7 @@ namespace User_service.Controllers
             {
                 return Ok(
                     UserModelTransformer.transformToJsonModel(
-                        userFacade.getUser(id)));
+                        userFacade.GetUser(id)));
             }
             catch (Exception e)
             {
@@ -109,7 +109,7 @@ namespace User_service.Controllers
 
             try
             {
-                userFacade.deleteUser(id);
+                userFacade.DeleteUser(id);
                 return NoContent();
                         
             }
