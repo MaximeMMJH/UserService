@@ -9,13 +9,11 @@ namespace User_service.Facades
 {
     public class UserFacade
     {
-        private List<UserDbModel> users;
         private UserRepository repository;
 
         public UserFacade(UserRepository userRepository)
         {
             repository = userRepository;
-            users = new List<UserDbModel>();
         }
 
         internal List<UserDbModel> GetUsers()

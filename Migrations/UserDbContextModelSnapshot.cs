@@ -26,10 +26,7 @@ namespace UserService.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Firstname")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Lastname")
+                    b.Property<string>("Username")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

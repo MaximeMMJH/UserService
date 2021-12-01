@@ -36,7 +36,7 @@ namespace User_service.Controllers
             try
             {
                 return Ok(
-                    UserModelTransformer.transformToJsonModels(
+                    UserMapper.MapDbToJsonList(
                         userFacade.GetUsers()));
             }
             catch (Exception e)
@@ -60,7 +60,7 @@ namespace User_service.Controllers
             try
             {
                 return Ok(
-                    UserModelTransformer.transformToJsonModel(
+                    UserMapper.MapDbToJson(
                         userFacade.GetUser(id)));
             }
             catch (Exception e)
@@ -74,7 +74,7 @@ namespace User_service.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public IActionResult CreateUser([FromBody] UserJsonModel user)
         {
@@ -85,9 +85,9 @@ namespace User_service.Controllers
             try
             {
                 return Ok(
-                    UserModelTransformer.transformToJsonModel(
+                    UserMapper.MapDbToJson(
                         userFacade.CreateUser(
-                            UserModelTransformer.transformToDbModel(user))));
+                            UserMapper.MapJsonToDb(user))));
             }
             catch (Exception e)
             {
@@ -99,7 +99,7 @@ namespace User_service.Controllers
         [HttpDelete]
         [Route("/users/{id}")]
         [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public IActionResult DeleteUser([FromRoute] Guid id)
         {
@@ -125,7 +125,7 @@ namespace User_service.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateUser([FromBody] UserJsonModel user)
         {
@@ -136,9 +136,9 @@ namespace User_service.Controllers
             try
             {
                 return Ok(
-                    UserModelTransformer.transformToJsonModel(
+                    UserMapper.MapDbToJson(
                         userFacade.UpdateUser(
-                            UserModelTransformer.transformToDbModel(user))));
+                            UserMapper.MapJsonToDb(user))));
 
             }
             catch (Exception e)

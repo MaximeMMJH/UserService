@@ -14,7 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using User_service.Facades;
 using User_service.Repositories;
+using UserService.BackgroundServices;
 using UserService.Repositories;
+using UserService.Utils;
 
 namespace UserService
 {
@@ -37,13 +39,24 @@ namespace UserService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UserService", Version = "v1" });
             });
 
-            services.AddLogging();
-            services.AddScoped<UserRepository>();
-            services.AddScoped<UserFacade>();
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:8081")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
+            services.AddScoped<UserFacade>();
+            services.AddScoped<UserRepository>();
+
             services.AddDbContext<UserDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("MySql"), new MySqlServerVersion(new Version(8, 0, 23))));
+                options.UseMySql(ConnectionStringUtil.GetConnectionString(), new MySqlServerVersion(new Version(8, 0, 23))));
+
+            services.AddHostedService<MessageHandler>();
 
         }
 
@@ -62,7 +75,7 @@ namespace UserService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

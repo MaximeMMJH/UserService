@@ -9,7 +9,7 @@ using UserService.Repositories;
 namespace UserService.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20211007112117_InitialCreate")]
+    [Migration("20211125144432_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,7 @@ namespace UserService.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Firstname")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Lastname")
+                    b.Property<string>("Username")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

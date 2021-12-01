@@ -22,7 +22,13 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_HOST": "localhost",
+        "DB_USERNAME": "user",
+        "DB_PASSWORD": "p4ssword",
+        "DB_NAME": "Users",
+        "DB_PORT": "3306",
+        "RABBITMQ_HOST": "localhost"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5010"

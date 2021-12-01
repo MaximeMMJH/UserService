@@ -25,23 +25,23 @@ namespace User_service.Repositories
             return addedUser.Entity;
         }
 
-        internal List<UserDbModel> GetUsers()
+        public List<UserDbModel> GetUsers()
         {
             return userContext.Users.ToList();
         }
 
-        internal UserDbModel GetUser(Guid id)
+        public UserDbModel GetUser(Guid id)
         {
             return userContext.Users.Find(id);
         }
 
-        internal void DeleteUser(Guid id)
+        public void DeleteUser(Guid id)
         {
             userContext.Remove(id);
             userContext.SaveChanges();
         }
 
-        internal UserDbModel UpdateUser(UserDbModel user)
+        public UserDbModel UpdateUser(UserDbModel user)
         {
             EntityEntry<UserDbModel> updatedUser = userContext.Users.Update(user);
             userContext.SaveChanges();
