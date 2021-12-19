@@ -54,7 +54,7 @@ namespace UserService
             services.AddScoped<UserRepository>();
 
             services.AddDbContext<UserDbContext>(options =>
-                options.UseMySql(ConnectionStringUtil.GetConnectionString(), new MySqlServerVersion(new Version(8, 0, 23))));
+                options.UseMySql(Configuration.GetConnectionString("MySql"), new MySqlServerVersion(new Version(8, 0, 23))));
 
             services.AddHostedService<MessageHandler>();
 
