@@ -30,7 +30,7 @@ namespace UserService.BackgroundServices
         }
         private void InitRabbitMQ()
         {
-            var factory = new ConnectionFactory { HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST"), UserName = "user", Password = "wHa0QFbZlX" };
+            var factory = new ConnectionFactory { HostName = "stable-rabbitmq.mg.svc", UserName = "user", Password = "wHa0QFbZlX" };
 
             // create connection  
             _connection = factory.CreateConnection();
