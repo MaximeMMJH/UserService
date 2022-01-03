@@ -28,6 +28,12 @@ namespace User_service.Controllers
         }
 
         [HttpGet]
+        public IActionResult Ping()
+        {
+            return Ok("Hello world!");
+        }
+
+        [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserJsonModel[]), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
