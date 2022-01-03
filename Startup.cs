@@ -58,6 +58,14 @@ namespace UserService
 
             services.AddHostedService<MessageHandler>();
 
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication("Bearer", options =>
+                {
+                    options.ApiName = "api";
+                    options.Authority = "http://20.50.160.54";
+                    options.RequireHttpsMetadata = false;
+                });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

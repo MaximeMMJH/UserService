@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,6 +15,7 @@ namespace User_service.Controllers
 {
     [ApiController]
     [Route("/users")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class UserController : Controller
     {
         private readonly ILogger<UserController> logger;
