@@ -28,6 +28,7 @@ namespace User_service.Controllers
         }
 
         [HttpGet]
+        [Route("/users/ping")]
         public IActionResult Ping()
         {
             return Ok("Hello world!");
