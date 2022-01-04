@@ -51,6 +51,7 @@ namespace User_service.Repositories
         internal UserDbModel GetUserByAuthId(Guid id)
         {
             return userContext.Users.First(x => x.subId.Equals(id));
+
         }
     }
 }
