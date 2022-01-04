@@ -39,7 +39,7 @@ namespace User_service.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUser([FromRoute] Guid id)
+        public IActionResult GetAuthUser([FromRoute] Guid id)
         {
             logger.LogInformation($"The retrieval of a user by auth id is requested");
 
