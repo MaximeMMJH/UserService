@@ -47,5 +47,10 @@ namespace User_service.Repositories
             userContext.SaveChanges();
             return updatedUser.Entity;
         }
+
+        internal UserDbModel GetUserByAuthId(Guid id)
+        {
+            return userContext.Users.First(x => x.subId.Equals(id));
+        }
     }
 }

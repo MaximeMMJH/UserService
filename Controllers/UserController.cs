@@ -35,6 +35,30 @@ namespace User_service.Controllers
         }
 
         [HttpGet]
+        [Route("/users/auth/{id}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(UserJsonModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetUser([FromRoute] Guid id)
+        {
+            logger.LogInformation($"The retrieval of a user by auth id is requested");
+
+            if (!ModelState.IsValid) return BadRequest();
+
+            try
+            {
+                return Ok(
+                    UserMapper.MapDbToJson(
+                        userFacade.GetUserByAuthId(id)));
+            }
+            catch (Exception e)
+            {
+                logger.LogError("error occured when retrieving a user by auth id", e);
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserJsonModel[]), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]

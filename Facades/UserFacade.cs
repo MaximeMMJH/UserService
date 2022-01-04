@@ -40,5 +40,10 @@ namespace User_service.Facades
         {
             return repository.UpdateUser(userDbModel);
         }
+
+        internal UserDbModel GetUserByAuthId(Guid id)
+        {
+            return repository.GetUserByAuthId(id);
+        }
     }
 }
