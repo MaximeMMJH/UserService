@@ -9,7 +9,7 @@ using UserService.Repositories;
 namespace UserService.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20211125144432_InitialCreate")]
+    [Migration("20220104135503_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace UserService.Migrations
 
                     b.Property<string>("Username")
                         .HasColumnType("longtext");
+
+                    b.Property<Guid>("subId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 

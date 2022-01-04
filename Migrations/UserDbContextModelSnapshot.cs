@@ -29,6 +29,9 @@ namespace UserService.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("longtext");
 
+                    b.Property<Guid>("subId")
+                        .HasColumnType("char(36)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");

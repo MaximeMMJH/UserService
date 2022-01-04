@@ -38,7 +38,8 @@ namespace User_service.Transformers
             return new UserDbModel()
             {
                 Username = user.Username,
-                Email = user.Email
+                Email = user.Email,
+                subId = user.subId
             };
         }
     }

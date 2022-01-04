@@ -14,5 +14,6 @@ namespace User_service.Models
         public Guid Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
+        public Guid subId { get; set; }
     }
 }
